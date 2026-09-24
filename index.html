@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nafi</title>
+  <style>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: #050505;
+      color: #fff;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    .page {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      padding: 40px 20px;
+    }.home {
+      align-items: center;
+    }
+    .hero { text-align: center; }
+    .pfp {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+      margin: 0 auto 14px;
+    }
+    .name {
+      margin: 0;
+      font-size: 24px;
+      font-weight: 800;
+    }
+    #cursor { animation: blink 0.6s step-end infinite; }
+
+    .socials-btn {
+      margin-top: 22px;
+      padding: 12px 28px;
+      border: 2px solid #fff;
+      border-radius: 999px;
+      background: transparent;
+      color: #fff;
+      font-size: 16px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: transform 0.8s cubic-bezier(.2,.8,.2,1), opacity 0.5s;
+    }
+    .socials-btn:hover { transform: scale(1.06); }
+
+    .info-link {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      margin-top: 18px;
+      color: #fff;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      animation: infoFloat 1.5s ease-in-out infinite;
+    }
+
+    .info-arrow {
+      font-size: 28px;
+      line-height: 1;
+    }
+
+    .socials-btn.zooming {
+      transform: scale(12);
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .socials-screen {
+      position: fixed;
+      inset: 0;
+      z-index: 30;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #050505;
+      opacity: 0;
+      visibility: hidden;
+      transform: scale(1.08);
+      transition: opacity 0.7s ease, transform 0.9s ease, visibility 0.7s;
+    }
+
+    .socials-screen.show {
+      opacity: 1;
+      visibility: visible;
+      transform: scale(1);
+    }
+
+    .socials-content {
+      width: min(90%, 560px);
+      text-align: center;
+    }
+
+    .socials-content h2 {
+      margin: 0 0 28px;
+      font-size: 46px;
+      font-weight: 900;
+    }
+
+    .social-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .social-list a {
+      display: block;
+      padding: 14px 18px;
+      border: 2px solid #fff;
+      border-radius: 12px;
+      color: #fff;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: 800;
+      transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease;
+    }
+
+    .social-list a:hover {
+      transform: translateY(-3px);
+      background: #fff;
+      color: #050505;
+    }
+
+    .back-btn {
+      margin-top: 26px;
+      padding: 11px 26px;
+      border: 2px solid #fff;
+      border-radius: 999px;
+      background: transparent;
+      color: #fff;
+      font-size: 16px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .color-wave {
+      position: fixed;
+      left: var(--x);
+      top: var(--y);
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 20;
+      transform: translate(-50%, -50%) scale(0);
+      background: conic-gradient(#ff004c, #ff8a00, #ffe600, #00e676, #00c8ff, #7a5cff, #ff00c8, #ff004c);
+      filter: blur(1px);
+      animation: colorWave 1.9s cubic-bezier(.2,.7,.15,1) forwards;
+    }
+    .home.fading { animation: homeZoom 1.2s ease-in forwards; }
+
+    @keyframes homeZoom {
+      to { transform: scale(1.16); opacity: 0; }
+    }
+    @keyframes colorWave {
+      to { transform: translate(-50%, -50%) scale(170); opacity: 1; }
+    }
+
+    .hobbies-page {
+      align-items: flex-start;
+      text-align: center;
+      padding-top: 60px;
+      background: #0a0a0a;
+    }    .hobbies-content {
+      width: 100%;
+      max-width: 700px;
+    }
+    .hobbies-title {
+      position: relative;
+      display: inline-block;
+      margin: 0 0 90px;
+      font-size: 48px;
+      font-weight: 900;
+      letter-spacing: 1px;
+    }
+    .hobbies-title span {
+      display: inline-block;
+      animation: wave 1.6s ease-in-out infinite;
+    }
+    .hobbies-title::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -14px;
+      width: 100%;
+      height: 4px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, transparent, #fff, transparent);
+      background-size: 200% 100%;
+      animation: underlineMove 1.4s linear infinite;
+    }    .hobbies-content p {
+      margin: 0 0 18px;
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 1.8;
+    }
+    @keyframes blink {
+      50% { opacity: 0; }
+    }
+
+    @keyframes infoFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(7px); }
+    }
+    @keyframes wave {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-9px); }
+    }
+    @keyframes underlineMove {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <section class="page home">
+    <main class="hero">
+      <img class="pfp" src="img/fr.png" alt="N">
+      <h1 class="name"><span id="typed"></span><span id="cursor">|</span></h1>
+      <button class="socials-btn" id="socialsBtn">Socials</button>
+      <a class="info-link" href="#hobbys-title" aria-label="Go to Hobbys information">
+        <span class="info-arrow">↓</span>
+        <span>INFO</span>
+      </a>
+    </main>
+  </section>
+
+  <section class="page hobbies-page">
+    <main class="hobbies-content">
+      <h2 id="hobbys-title" class="hobbies-title" aria-label="Hobbys"></h2>
+      <p>I love playing guitar and listening to music. Music is a big part of what I enjoy in my free time.</p>
+      <p>I also love gaming, whether I'm playing casually or trying to improve and learn something new.</p>
+      <p>In the future, I aspire to become a prosperous developer and build useful, creative things with code.</p>
+    </main>
+  </section>
+
+  <section class="socials-screen" id="socialsScreen" aria-hidden="true">
+    <main class="socials-content">
+      <h2>Socials</h2>
+
+      <div class="social-list">
+        <a href="mailto:nafiarts20@gmail.com">Gmail</a>
+        <a href="https://x.com/Nafiarts20" target="_blank" rel="noopener noreferrer">X</a>
+        <a href="https://www.youtube.com/channel/UCfaSVhYGTY5E_PGIVBSCShA" target="_blank" rel="noopener noreferrer">YouTube</a>
+        <a href="https://www.facebook.com/profile.php?id=61572718810338" target="_blank" rel="noopener noreferrer">Facebook</a>
+        <a href="https://www.roblox.com/users/5318815318/profile" target="_blank" rel="noopener noreferrer">Roblox</a>
+      </div>
+
+      <button class="back-btn" id="backBtn">Back</button>
+    </main>
+  </section>
+
+  <script>
+    const text = "My Name is Nafi";
+    let i = 0;
+
+    function typeText() {
+      if (i < text.length) {
+        document.getElementById("typed").textContent += text[i];
+        i++;
+        setTimeout(typeText, 120);
+      }
+    }
+
+    const hobbiesTitle = document.getElementById("hobbys-title");
+    "Hobbys".split("").forEach((letter, index) => {
+      const span = document.createElement("span");
+      span.textContent = letter;
+      span.style.animationDelay = (index * 0.12) + "s";
+      hobbiesTitle.appendChild(span);
+    });
+
+    typeText();
+
+    const socialsBtn = document.getElementById("socialsBtn");
+    const socialsScreen = document.getElementById("socialsScreen");
+    const backBtn = document.getElementById("backBtn");
+
+    socialsBtn.addEventListener("click", function () {
+      const rect = socialsBtn.getBoundingClientRect();
+      const wave = document.createElement("div");
+      wave.className = "color-wave";
+      wave.style.setProperty("--x", rect.left + rect.width / 2 + "px");
+      wave.style.setProperty("--y", rect.top + rect.height / 2 + "px");
+      document.body.appendChild(wave);
+
+      socialsBtn.classList.add("zooming");
+      setTimeout(() => {
+        socialsScreen.classList.add("show");
+        socialsScreen.setAttribute("aria-hidden", "false");
+      }, 650);
+
+      setTimeout(() => {
+        wave.remove();
+      }, 1900);
+    });
+
+    backBtn.addEventListener("click", function () {
+      socialsScreen.classList.remove("show");
+      socialsScreen.setAttribute("aria-hidden", "true");
+
+      setTimeout(() => {
+        socialsBtn.classList.remove("zooming");
+      }, 500);
+    });
+  </script>
+</body>
+</html>
