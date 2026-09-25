@@ -340,6 +340,40 @@
       overflow: hidden;
     }
 
+    .gubby-page {
+      position: relative;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 18px 0 0;
+      background: #fff;
+      overflow: hidden;
+    }
+
+    .gubby-title {
+      position: relative;
+      z-index: 2;
+      margin: 0;
+      padding: 0 16px;
+      color: #000;
+      font-size: clamp(28px, 4vw, 52px);
+      font-weight: 900;
+      text-align: center;
+      text-transform: lowercase;
+    }
+
+    .gubby-wall {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 90px;
+      bottom: 0;
+      background-color: #fff;
+      background-image: url("img/gubby.webp");
+      background-repeat: repeat;
+      background-size: 120px 120px;
+      background-position: center;
+    }
+
     .resume-btn {
       width: 95vw;
       height: 85vh;
@@ -492,7 +526,7 @@
     </main>
   </section>
 
-  <section class="page projects-page">
+  <section class="page projects-page" id="projects-page">
     <main class="projects-content">
       <h2 class="projects-title">Projects</h2>
       <button class="projects-btn" id="projectsBtn">See Projects</button>
@@ -512,6 +546,11 @@
     <button class="resume-btn" id="resumeBtn">RESUME PDF</button>
     <div class="resume-message" id="resumeMessage">i dont want a job</div>
     <button class="resume-back" id="resumeBack">Back</button>
+  </section>
+
+  <section class="page gubby-page" id="gubby-army">
+    <h2 class="gubby-title">gubby army!</h2>
+    <div class="gubby-wall" aria-hidden="true"></div>
   </section>
 
   <section class="projects-screen" id="projectsScreen" aria-hidden="true">
@@ -617,7 +656,10 @@
     });
 
     resumeBack.addEventListener("click", function () {
-      document.getElementById("resume-page").scrollIntoView({ behavior: "smooth" });
+      resumeMessage.classList.remove("show");
+      resumeBtn.style.opacity = "1";
+      resumeBtn.style.transform = "";
+      document.getElementById("projects-page").scrollIntoView({ behavior: "smooth" });
     });
 
     projectsBack.addEventListener("click", function () {
