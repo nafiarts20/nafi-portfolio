@@ -219,6 +219,238 @@
       0% { background-position: 200% 0; }
       100% { background-position: -200% 0; }
     }
+
+    .projects-page {
+      align-items: flex-start;
+      text-align: center;
+      padding-top: 60px;
+      background: #050505;
+    }
+
+    .projects-content {
+      width: 100%;
+      max-width: 700px;
+    }
+
+    .projects-title {
+      margin: 0 0 28px;
+      font-size: 48px;
+      font-weight: 900;
+    }
+
+    .projects-btn {
+      padding: 14px 30px;
+      border: 2px solid #fff;
+      border-radius: 999px;
+      background: transparent;
+      color: #fff;
+      font-size: 18px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease;
+    }
+
+    .projects-btn:hover {
+      transform: scale(1.06);
+      background: #fff;
+      color: #050505;
+    }
+
+    .busy-message {
+      margin: 18px 0 0;
+      font-size: 16px;
+      font-weight: 800;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .busy-message.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .nosy-message {
+      margin: 18px 0 0;
+      font-size: clamp(34px, 7vw, 72px);
+      line-height: 1.05;
+      font-weight: 900;
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .nosy-message.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .business-message {
+      margin: 10px 0 0;
+      font-size: clamp(34px, 7vw, 72px);
+      line-height: 1.05;
+      font-weight: 900;
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .business-message.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .lol-message {
+      margin: 12px 0 0;
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 0.5px;
+      opacity: 0;
+      transition: opacity 0.6s ease;
+    }
+
+    .lol-message.show {
+      opacity: 1;
+    }
+
+    .next-page-link {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      margin-top: 70px;
+      color: #fff;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      animation: infoFloat 1.5s ease-in-out infinite;
+    }
+
+    .next-page-arrow {
+      font-size: 34px;
+      line-height: 1;
+    }
+
+    .resume-page {
+      position: relative;
+      align-items: center;
+      text-align: center;
+      background: #050505;
+      overflow: hidden;
+    }
+
+    .resume-btn {
+      width: 95vw;
+      height: 85vh;
+      border: 3px solid #fff;
+      border-radius: 18px;
+      background: transparent;
+      color: #fff;
+      font-size: clamp(34px, 8vw, 100px);
+      font-weight: 900;
+      cursor: pointer;
+      transition: transform 0.4s ease, background 0.4s ease, color 0.4s ease;
+    }
+
+    .resume-btn:hover {
+      transform: scale(1.01);
+      background: #fff;
+      color: #050505;
+    }
+
+    .resume-message {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 30px;
+      background: #000;
+      color: #fff;
+      font-size: clamp(42px, 9vw, 110px);
+      font-weight: 900;
+      text-align: center;
+      opacity: 0;
+      visibility: hidden;
+      transform: scale(0.92);
+      transition: opacity 0.6s ease, transform 0.6s ease, visibility 0.6s;
+    }
+
+    .resume-message.show {
+      opacity: 1;
+      visibility: visible;
+      transform: scale(1);
+    }
+
+    .projects-screen {
+      position: fixed;
+      inset: 0;
+      z-index: 40;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #000;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.5s ease, visibility 0.5s ease;
+      overflow: hidden;
+    }
+
+    .projects-screen.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .nothing {
+      position: relative;
+      z-index: 2;
+      margin: 0;
+      font-size: clamp(42px, 8vw, 90px);
+      font-weight: 900;
+      letter-spacing: 2px;
+    }
+
+    .fly {
+      position: absolute;
+      z-index: 1;
+      font-size: 28px;
+      animation: flyAround 7s linear infinite;
+      user-select: none;
+    }
+
+    .fly:nth-child(1) { left: 8%; top: 15%; animation-duration: 6s; }
+    .fly:nth-child(2) { left: 70%; top: 12%; animation-duration: 8s; animation-delay: -2s; }
+    .fly:nth-child(3) { left: 20%; top: 70%; animation-duration: 7s; animation-delay: -1s; }
+    .fly:nth-child(4) { left: 82%; top: 68%; animation-duration: 9s; animation-delay: -4s; }
+    .fly:nth-child(5) { left: 48%; top: 8%; animation-duration: 7.5s; animation-delay: -3s; }
+    .fly:nth-child(6) { left: 55%; top: 82%; animation-duration: 6.5s; animation-delay: -2.5s; }
+    .fly:nth-child(7) { left: 5%; top: 48%; animation-duration: 8.5s; animation-delay: -5s; }
+    .fly:nth-child(8) { left: 90%; top: 42%; animation-duration: 7.2s; animation-delay: -1.5s; }
+
+    .projects-back {
+      position: fixed;
+      left: 50%;
+      bottom: 35px;
+      transform: translateX(-50%);
+      z-index: 3;
+      padding: 10px 24px;
+      border: 2px solid #fff;
+      border-radius: 999px;
+      background: transparent;
+      color: #fff;
+      font-size: 16px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    @keyframes flyAround {
+      0% { transform: translate(0, 0) rotate(0deg); }
+      25% { transform: translate(130px, -70px) rotate(12deg); }
+      50% { transform: translate(-80px, 110px) rotate(-10deg); }
+      75% { transform: translate(100px, 80px) rotate(8deg); }
+      100% { transform: translate(0, 0) rotate(0deg); }
+    }
   </style>
 </head>
 <body>
@@ -242,6 +474,40 @@
       <p>I also love gaming, whether I'm playing casually or trying to improve and learn something new.</p>
       <p>In the future, I aspire to become a prosperous developer and build useful, creative things with code.</p>
     </main>
+  </section>
+
+  <section class="page projects-page">
+    <main class="projects-content">
+      <h2 class="projects-title">Projects</h2>
+      <button class="projects-btn" id="projectsBtn">See Projects</button>
+      <p class="busy-message" id="busyMessage">playing roblox too busy</p>
+      <div class="nosy-message" id="nosyMessage">Why are you so nosy?</div>
+      <div class="business-message" id="businessMessage">MIND YOUR OWN BUSINESS</div>
+      <div class="lol-message" id="lolMessage">lol</div>
+    </main>
+  </section>
+
+  <a class="next-page-link" href="#resume-page" aria-label="Go to resume page">
+    <span class="next-page-arrow">↓</span>
+    <span>NEXT</span>
+  </a>
+
+  <section class="page resume-page" id="resume-page">
+    <button class="resume-btn" id="resumeBtn">RESUME PDF</button>
+    <div class="resume-message" id="resumeMessage">i dont want a job</div>
+  </section>
+
+  <section class="projects-screen" id="projectsScreen" aria-hidden="true">
+    <h2 class="nothing">nothing.....</h2>
+    <span class="fly">🪰</span>
+    <span class="fly">🪰</span>
+    <span class="fly">🪰</span>
+    <span class="fly">🪰</span>
+    <span class="fly">🪰</span>
+    <span class="fly">🪰</span>
+    <span class="fly">🪰</span>
+    <span class="fly">🪰</span>
+    <button class="projects-back" id="projectsBack">Back</button>
   </section>
 
   <section class="socials-screen" id="socialsScreen" aria-hidden="true">
@@ -285,6 +551,11 @@
     const socialsBtn = document.getElementById("socialsBtn");
     const socialsScreen = document.getElementById("socialsScreen");
     const backBtn = document.getElementById("backBtn");
+    const projectsBtn = document.getElementById("projectsBtn");
+    const projectsScreen = document.getElementById("projectsScreen");
+    const projectsBack = document.getElementById("projectsBack");
+    const resumeBtn = document.getElementById("resumeBtn");
+    const resumeMessage = document.getElementById("resumeMessage");
 
     socialsBtn.addEventListener("click", function () {
       const rect = socialsBtn.getBoundingClientRect();
@@ -312,6 +583,36 @@
       setTimeout(() => {
         socialsBtn.classList.remove("zooming");
       }, 500);
+    });
+
+    projectsBtn.addEventListener("click", function () {
+      projectsScreen.classList.add("show");
+      projectsScreen.setAttribute("aria-hidden", "false");
+    });
+
+    resumeBtn.addEventListener("click", function () {
+      this.style.opacity = "0";
+      this.style.transform = "scale(0.94)";
+      setTimeout(() => {
+        resumeMessage.classList.add("show");
+      }, 250);
+    });
+
+    projectsBack.addEventListener("click", function () {
+      projectsScreen.classList.remove("show");
+      projectsScreen.setAttribute("aria-hidden", "true");
+      setTimeout(() => {
+        document.getElementById("busyMessage").classList.add("show");
+        setTimeout(() => {
+          document.getElementById("nosyMessage").classList.add("show");
+          setTimeout(() => {
+            document.getElementById("businessMessage").classList.add("show");
+            setTimeout(() => {
+              document.getElementById("lolMessage").classList.add("show");
+            }, 500);
+          }, 500);
+        }, 500);
+      }, 350);
     });
   </script>
 </body>
