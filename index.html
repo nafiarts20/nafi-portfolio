@@ -383,6 +383,22 @@
       transform: scale(1);
     }
 
+    .resume-back {
+      position: absolute;
+      left: 50%;
+      bottom: 32px;
+      transform: translateX(-50%);
+      z-index: 5;
+      padding: 10px 24px;
+      border: 2px solid #fff;
+      border-radius: 999px;
+      background: transparent;
+      color: #fff;
+      font-size: 16px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
     .projects-screen {
       position: fixed;
       inset: 0;
@@ -495,6 +511,7 @@
   <section class="page resume-page" id="resume-page">
     <button class="resume-btn" id="resumeBtn">RESUME PDF</button>
     <div class="resume-message" id="resumeMessage">i dont want a job</div>
+    <button class="resume-back" id="resumeBack">Back</button>
   </section>
 
   <section class="projects-screen" id="projectsScreen" aria-hidden="true">
@@ -556,6 +573,7 @@
     const projectsBack = document.getElementById("projectsBack");
     const resumeBtn = document.getElementById("resumeBtn");
     const resumeMessage = document.getElementById("resumeMessage");
+    const resumeBack = document.getElementById("resumeBack");
 
     socialsBtn.addEventListener("click", function () {
       const rect = socialsBtn.getBoundingClientRect();
@@ -596,6 +614,10 @@
       setTimeout(() => {
         resumeMessage.classList.add("show");
       }, 250);
+    });
+
+    resumeBack.addEventListener("click", function () {
+      document.getElementById("resume-page").scrollIntoView({ behavior: "smooth" });
     });
 
     projectsBack.addEventListener("click", function () {
